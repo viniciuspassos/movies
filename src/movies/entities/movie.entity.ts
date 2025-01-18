@@ -1,15 +1,15 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Movie {
   @Column()
   year: number;
-  @Column()
+  @PrimaryColumn() //set this because don't have an Id
   title: string;
   @Column()
   studios: string;
   @Column()
   producers: string;
-  @Column()
+  @Column({ nullable: true })
   winner: 'yes' | null;
 }

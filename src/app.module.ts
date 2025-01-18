@@ -12,6 +12,7 @@ import { Movie } from './movies/entities/movie.entity';
       type: 'sqlite',
       database: ':memory:',
       entities: [Movie],
+      synchronize: true,
     }),
   ],
   controllers: [AppController],
