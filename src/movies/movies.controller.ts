@@ -5,8 +5,12 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Get('/outliers')
+  @Get()
   findAll() {
     return this.moviesService.findAll();
+  }
+  @Get('/outliers')
+  findoutliers() {
+    return this.moviesService.getOutliers();
   }
 }

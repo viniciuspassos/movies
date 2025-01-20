@@ -4,6 +4,7 @@ import { MoviesController } from './movies.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Movie } from './entities/movie.entity';
 import * as path from 'path';
+import { MovieRepository } from './movies.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Movie])],
