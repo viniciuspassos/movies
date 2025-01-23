@@ -63,13 +63,6 @@ Para garantir a qualidade do código, o projeto conta com diversos testes:
 
 ---
 
-## 📚 Documentação
-
-A documentação da API (se configurada com Swagger) pode ser acessada em:  
-`http://localhost:3000/api`
-
----
-
 ## 📦 Estrutura do projeto
 
 ```plaintext
