@@ -55,21 +55,10 @@ GET `http://localhost:3000/movies/outliers`: Retorna os filmes que receberam pr�
 
 Para garantir a qualidade do código, o projeto conta com diversos testes:
 
-- **Testes unitários**:
-
-  ```bash
-  npm run test
-  ```
-
 - **Testes end-to-end (E2E)**:
 
   ```bash
   npm run test:e2e
-  ```
-
-- **Cobertura de testes**:
-  ```bash
-  npm run test:cov
   ```
 
 ---
