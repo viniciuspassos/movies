@@ -4,6 +4,7 @@ import { Movie } from './entities/movie.entity';
 import * as fs from 'fs';
 import * as csvParser from 'csv-parser';
 import { MovieRepository } from './movies.repository';
+import { MovieOutlier, OutliersResponse } from './types/movieOutlier';
 
 @Injectable()
 export class MoviesService {
@@ -18,6 +19,26 @@ export class MoviesService {
 
   async getOutliers() {
     return this.getProducerAwardsGap();
+  }
+  parseOutliers(data: MovieOutlier[]): OutliersResponse {
+    const response: OutliersResponse = { min: [], max: [] };
+
+    data.forEach((item) => {
+      const parsedItem = {
+        producer: item.producers,
+        interval: item.interval,
+        previousWin: item.previousWin,
+        followingWin: item.followingWin,
+      };
+
+      if (item.category === 'min') {
+        response.min.push(parsedItem);
+      } else if (item.category === 'max') {
+        response.max.push(parsedItem);
+      }
+    });
+
+    return response;
   }
 
   async getProducerAwardsGap() {
@@ -76,7 +97,8 @@ SELECT
 FROM MinInterval;
   `;
     const outliers = await this.movieRepository.query(query);
-    return outliers;
+    const parsedResponse = this.parseOutliers(outliers);
+    return parsedResponse;
   }
 
   async loadDataFromFile(filePath: string): Promise<void> {
